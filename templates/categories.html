@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Shadi Byaah</title>
+
+```
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+```
+
+</head>
+
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="{% static 'images/logo.jpeg' %}" alt="Shadi Byaah Logo">
+        <span>Shadi Byaah</span>
+    </div>
+
+```
+<nav>
+    <a href="{% url 'home' %}">| Home |</a>
+    <a href="#">| About |</a>
+    <a href="#">| Services |</a>
+    <a href="#">| Contact |</a>
+</nav>
+
+<div class="header-right">
+    <i class="fa-brands fa-instagram"></i>
+    <span>shadi_byaah</span>
+</div>
+```
+
+</header>
+
+<main>
+
+```
+<section class="categories">
+
+    <h1>Explore Our Collection</h1>
+
+    <p>Find beautiful and customizable products for your special occasions.</p>
+
+    <div class="category-container">
+
+        <a href="{% url 'mehndi_favors' %}" class="category-card">
+            <img src="{% static 'images/mehndi favours.jpeg' %}" alt="Mehndi Favors">
+            <h2>Mehndi Favors</h2>
+        </a>
+
+        <a href="{% url 'wedding_favours' %}" class="category-card">
+            <img src="{% static 'images/wedding favours.jpeg' %}" alt="Wedding Favors">
+            <h2>Wedding Favors</h2>
+        </a>
+
+        <a href="{% url 'nikah_essentials' %}" class="category-card">
+            <img src="{% static 'images/nikkah essentials.jpeg' %}" alt="Nikah Essentials">
+            <h2>Nikah Essentials</h2>
+        </a>
+
+        <a href="{% url 'bridal_shower' %}" class="category-card">
+            <img src="{% static 'images/bridal shower.jpeg' %}" alt="Bridal Shower">
+            <h2>Bridal Shower</h2>
+        </a>
+
+        <a href="{% url 'baby_shower' %}" class="category-card">
+            <img src="{% static 'images/baby shower.jpeg' %}" alt="Baby Shower">
+            <h2>Baby Shower</h2>
+        </a>
+
+        <a href="{% url 'wedding_cards' %}" class="category-card">
+            <img src="{% static 'images/wedding cards.jpeg' %}" alt="Wedding Cards">
+            <h2>Wedding Cards</h2>
+        </a>
+
+        <a href="{% url 'floral_jewellery' %}" class="category-card">
+            <img src="{% static 'images/floral jewelry.jpeg' %}" alt="Floral Jewelry">
+            <h2>Floral Jewelry</h2>
+        </a>
+
+        <a href="{% url 'engagement' %}" class="category-card">
+            <img src="{% static 'images/engagement.jpeg' %}" alt="Engagement">
+            <h2>Engagement</h2>
+        </a>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+</body>
+</html>

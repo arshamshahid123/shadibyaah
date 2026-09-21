@@ -1,0 +1,233 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product.name }} - Shadibyaah</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="{% static 'images/logo.jpeg' %}" alt="Shadi Byaah Logo">
+        <span>Shadi Byaah</span>
+    </div>
+
+    <nav>
+        <a href="{% url 'home' %}">| Home |</a>
+        <a href="#">| About |</a>
+        <a href="#">| Services |</a>
+        <a href="#">| Contact |</a>
+    </nav>
+
+    <div class="header-right">
+        <i class="fa-brands fa-instagram"></i>
+        <span>shadi_byaah</span>
+    </div>
+</header>
+
+<main>
+
+    <section class="product-detail">
+
+        <div class="detail-container">
+
+            <!-- Product Images -->
+            <div class="product-images">
+
+                <button class="slider-btn prev" onclick="previousImage()">❮</button>
+
+                <div class="image-slider">
+                    {% for image in product.images.all %}
+                        <img src="{% static 'images/' %}{{ image.image }}"
+                             alt="{{ product.name }}"
+                             class="slider-image">
+                    {% endfor %}
+                </div>
+
+                <button class="slider-btn next" onclick="nextImage()">❯</button>
+
+            </div>
+
+
+            <!-- Product Information -->
+            <div class="product-info">
+
+                <h1>{{ product.name }}</h1>
+                {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+                <p class="description">
+                    {{ product.description }}
+                </p>
+
+
+                <!-- Price -->
+                {% if product.price %}
+                    <p class="price">
+                        Price: Rs. {{ product.price }}
+                    </p>
+                {% endif %}
+
+
+               <!-- Customization Form -->
+
+<form method="POST" action="{% url 'add_to_cart' product.id %}">
+
+    {% csrf_token %}
+
+
+    <!-- Available Options -->
+
+    {% if product.options.exists %}
+
+        <div class="options-list">
+
+            <h3>Available Options</h3>
+
+            {% for option in product.options.all %}
+
+                <div class="option-row">
+
+                    <label>
+
+                        <input type="radio"
+                               name="selected_option"
+                               value="{{ option.id }}"
+                               required>
+
+                        <span class="option-name">
+                            {{ option.option_name }}
+                        </span>
+
+                        <span class="option-price">
+                            {{ option.price }}/-
+                        </span>
+
+                    </label>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- Customization Details -->
+
+<div class="customization-box">
+
+    <h3>Customization Details</h3>
+
+    <div class="custom-row">
+        <label>Bride Name</label>
+        <input type="text"
+               name="bride_name"
+               placeholder="Enter Bride Name">
+    </div>
+
+    <div class="custom-row">
+        <label>Groom Name</label>
+        <input type="text"
+               name="groom_name"
+               placeholder="Enter Groom Name">
+    </div>
+
+    <div class="custom-row">
+        <label>Event Type</label>
+
+        <select name="event_type">
+            <option value="">Select Event</option>
+            <option value="Mehndi">Mehndi</option>
+            <option value="Barat">Barat</option>
+            <option value="Walima">Walima</option>
+            <option value="Engagement">Engagement</option>
+            <option value="Baat Pakki">Baat Pakki</option>
+        </select>
+    </div>
+
+    <div class="custom-row">
+        <label>Event Date</label>
+        <input type="date" name="event_date">
+    </div>
+
+    <div class="custom-row">
+        <label>Additional Information</label>
+
+        <textarea name="additional_information"
+                  placeholder="Any other customization details"></textarea>
+    </div>
+
+</div>
+
+
+<!-- Add to Cart -->
+
+<button type="submit" class="add-cart-btn">
+    Add to Cart
+</button>
+
+</form>
+
+
+
+
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+    let currentImage = 0;
+
+    const images = document.querySelectorAll(".slider-image");
+
+    function showImage(index) {
+        if (images.length === 0) return;
+
+        if (index >= images.length) {
+            currentImage = 0;
+        } else if (index < 0) {
+            currentImage = images.length - 1;
+        } else {
+            currentImage = index;
+        }
+
+        images.forEach((image, i) => {
+            image.style.display =
+                i === currentImage ? "block" : "none";
+        });
+    }
+
+    function nextImage() {
+        showImage(currentImage + 1);
+    }
+
+    function previousImage() {
+        showImage(currentImage - 1);
+    }
+
+    showImage(0);
+</script>
+
+</body>
+</html>
+

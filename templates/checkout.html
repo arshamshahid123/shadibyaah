@@ -1,0 +1,494 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Checkout - Shadi Byaah</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #fff7fa;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background-color: #FF007F;
+            position: relative;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-left {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-left img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .header-left span {
+            font-family: "DM Serif Display", serif;
+            font-size: 17px;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-family: "Playfair Display", serif;
+            font-size: 17px;
+        }
+
+        .header-right {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: white;
+            font-family: "Playfair Display", serif;
+            font-size: 18px;
+        }
+
+        .header-right i {
+            font-size: 20px;
+            color: white;
+        }
+
+        /* ================= CHECKOUT ================= */
+
+        .checkout-container {
+            width: 85%;
+            max-width: 800px;
+            margin: 45px auto;
+        }
+
+        .checkout-title {
+            text-align: center;
+            color: #FF007F;
+            font-family: "DM Serif Display", serif;
+            font-size: 38px;
+            margin-bottom: 30px;
+        }
+
+        .checkout-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #FF007F;
+            font-family: "DM Serif Display", serif;
+            font-size: 18px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .place-order-btn {
+            display: block;
+            margin: 25px auto 0;
+            width: 220px;
+            height: 50px;
+            background-color: #FF007F;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: "DM Serif Display", serif;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .place-order-btn:hover {
+            opacity: 0.88;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #FF007F;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 60px;
+            font-family: "Playfair Display", serif;
+        }
+
+        footer p {
+            margin: 6px 0;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+.order-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff7fa;
+    border-radius: 10px;
+}
+
+.order-summary h2 {
+    margin-top: 0;
+    color: #FF007F;
+    font-family: "DM Serif Display", serif;
+    font-size: 24px;
+}
+
+.order-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.final-total {
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+    color: #FF007F;
+    font-weight: bold;
+    font-size: 19px !important;
+}
+
+.payment-section {
+    margin-top: 30px;
+}
+
+.payment-section h2 {
+    color: #FF007F;
+    font-family: "DM Serif Display", serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.payment-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: #FF007F;
+}
+.sadapay-instructions {
+    margin-top: 15px;
+    padding: 15px 18px;
+    background-color: #fff7fa;
+    border-radius: 8px;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+.order-success {
+    margin-bottom: 25px;
+    padding: 18px 20px;
+    background-color: white;
+    border: 1px solid #FF007F;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.order-success h2 {
+    color: #FF007F;
+    font-family: "DM Serif Display", serif;
+    margin: 0 0 8px 0;
+}
+
+.order-success p {
+    font-family: "Playfair Display", serif;
+    margin: 6px 0;
+}
+.sadapay-instructions p {
+    margin: 5px 0;
+}
+
+.sadapay-instructions strong {
+    color: #FF007F;
+    font-family: "DM Serif Display", serif;
+    font-size: 18px;
+}
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="header-left">
+
+        <img src="{% static 'images/logo.jpeg' %}"
+             alt="Shadi Byaah Logo">
+
+        <span>Shadi Byaah</span>
+
+    </div>
+
+    <nav>
+
+        <a href="{% url 'home' %}">| Home |</a>
+
+        <a href="#">| About |</a>
+
+        <a href="#">| Services |</a>
+
+        <a href="#">| Contact |</a>
+
+    </nav>
+
+    <div class="header-right">
+
+        <i class="fa-brands fa-instagram"></i>
+
+        <span>shadi_byaah</span>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= CHECKOUT CONTENT ================= -->
+
+<div class="checkout-container">
+
+    <h1 class="checkout-title">
+        Checkout
+    </h1>
+{% if order_placed %}
+    <div class="order-success">
+        <h2>Order Placed Successfully!</h2>
+        <p>Thank you, {{ full_name }}. Your order has been received.</p>
+        <p>We will verify your payment and contact you soon.</p>
+    </div>
+{% endif %}
+    <form method="POST" class="checkout-form">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input type="text"
+                   name="full_name"
+                   required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Contact Number</label>
+
+            <input type="tel"
+                   name="contact_number"
+                   required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Delivery Address</label>
+
+            <textarea name="delivery_address"
+                      required></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Additional Information</label>
+
+            <textarea name="additional_information"></textarea>
+
+        </div>
+
+
+        <!-- ================= ORDER SUMMARY ================= -->
+
+        <div class="order-summary">
+
+            <h2>Order Summary</h2>
+
+            <p>
+                Subtotal:
+                <span>Rs. {{ subtotal }}/-</span>
+            </p>
+
+            <p>
+                Delivery Charges:
+                <span>Rs. {{ delivery_charges }}/-</span>
+            </p>
+
+            <p class="final-total">
+                Total Amount:
+                <span>Rs. {{ total }}/-</span>
+            </p>
+
+        </div>
+
+
+        <!-- ================= PAYMENT METHOD ================= -->
+
+        <div class="payment-section">
+
+            <h2>Payment Method</h2>
+
+            <label class="payment-option">
+
+                <input type="radio"
+                       name="payment_method"
+                       value="bank_transfer"
+                       required>
+
+                <span>Bank Transfer</span>
+
+            </label>
+
+            <label class="payment-option">
+
+                <input type="radio"
+                       name="payment_method"
+                       value="mastercard">
+
+                <span>Mastercard</span>
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input type="radio"
+                       name="payment_method"
+                       value="debit_card">
+
+                <span>Debit Card</span>
+
+            </label>
+            <label class="payment-option">
+    <input type="radio"
+           name="payment_method"
+           value="sadapay">
+    <span>SadaPay</span>
+</label>
+             <div class="sadapay-instructions">
+    <p><strong>Payment Instructions:</strong></p>
+
+    <p>Transfer the total amount to the following SadaPay account using your preferred bank or wallet.</p>
+
+    <p><strong>Account Name:</strong> Arsham Shahid</p>
+    <p><strong>SadaPay Number:</strong> 03234873351</p>
+
+    <p>After making the payment, keep your payment receipt for confirmation.</p>
+</div>
+
+
+        </div>
+        <div class="form-group">
+    <label>Payment Reference</label>
+    <input type="text"
+           name="payment_reference"
+           placeholder="Enter transaction/reference ID">
+             required>
+</div>
+
+
+        <button type="submit"
+                class="place-order-btn">
+
+            Proceed to Payment
+
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>arshamshahid123@gmail.com</p>
+
+    <p>
+        <a href="#">Contact</a>
+        |
+        <a href="#">Privacy</a>
+        |
+        <a href="#">Terms</a>
+    </p>
+
+</footer>
+
+</body>
+</html>
