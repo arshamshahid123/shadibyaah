@@ -852,9 +852,8 @@ header {
     height: 45px;
     object-fit: contain;
 }
-
 .header-left span {
-    font-size: 15px;
+    display: none;
 }
 
 header nav {
@@ -900,7 +899,7 @@ header nav a {
         text-align: center;
     }
 .hero-text h1 {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.2;
     margin: 0 0 12px;
     white-space: nowrap;
@@ -1352,6 +1351,30 @@ header nav a {
         height: 50px;
         display: block;
         margin: 20px auto 0;
+    }
+
+}
+.options-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.options-list h3 {
+    order: 1;
+}
+
+.options-list .option-row {
+    order: 2;
+}
+@media (max-width: 768px) {
+
+    .categories {
+        padding-top: 8px;
+    }
+
+    .categories h1 {
+        margin-top: 0;
+        margin-bottom: 8px;
     }
 
 }
