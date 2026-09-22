@@ -70,7 +70,7 @@
                     <p>Price: Rs. {{ product.price }}</p>
                 {% endif %}
 
-                {% if product.options.all %}
+                {% if product.options.exists %}
                     <h3>Available Options:</h3>
 
                     {% for option in product.options.all %}
