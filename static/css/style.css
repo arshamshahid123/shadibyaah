@@ -855,15 +855,15 @@ header {
 .header-left span {
     display: none;
 }
-
 header nav {
     width: auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     gap: 3px;
     margin: 0;
+    margin-right: 8px;
 }
 
 header nav a {
@@ -1169,28 +1169,33 @@ header nav a {
 
 
     /* ---------- PRODUCT OPTIONS ---------- */
+.options-list {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
 
-    .options-list {
-        width: 100%;
-        max-width: 450px;
-        margin: 0 auto;
-    }
+.options-list h3 {
+    display: block;
+    color: #FF007F;
+    font-family: "DM Serif Display", serif;
+    font-size: 21px;
+    margin: 0 0 18px;
+}
 
-    .options-list p {
-        font-size: 15px;
-        line-height: 1.5;
-        margin: 9px 0;
-    }
+.options-list p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 9px 0;
+}
 
-    .option-name {
-        margin-right: 5px;
-    }
+.option-name {
+    margin-right: 5px;
+}
 
-    .option-price {
-        margin-left: 3px;
-    }
-
-
+.option-price {
+    margin-left: 3px;
+}
     /* ---------- CUSTOMIZATION ---------- */
 
     .customization-box {
